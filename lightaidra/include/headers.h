@@ -1,3 +1,5 @@
+﻿// UTF-8 인코딩
+
 #ifndef __HEADERS_H_
 #define __HEADERS_H_
 

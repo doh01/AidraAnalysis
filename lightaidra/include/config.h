@@ -1,3 +1,5 @@
+﻿// UTF-8 인코딩
+
 #ifndef __CONFIG_H_
 #define __CONFIG_H_
 

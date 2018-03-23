@@ -1,3 +1,5 @@
+﻿// UTF-8 인코딩
+
 #ifndef __SCAN_H
 #define __SCAN_H
 

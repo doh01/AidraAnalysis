@@ -1,4 +1,6 @@
-﻿/*
+﻿// UTF-8 인코딩
+
+/*
  * utils.c - USE LIGHTAIDRA AT YOUR OWN RISK!
  *
  * Lightaidra - IRC-based mass router scanner/exploiter.

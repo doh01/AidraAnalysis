@@ -1,3 +1,5 @@
+﻿// UTF-8 인코딩
+
 #ifndef __IRC_H_
 #define __IRC_H_
 

@@ -1,3 +1,5 @@
+﻿// UTF-8 인코딩
+
 #ifndef __MAIN_H_
 #define __MAIN_H_
 

@@ -1,3 +1,5 @@
+﻿// UTF-8 인코딩
+
 /*
  * requests.c - USE LIGHTAIDRA AT YOUR OWN RISK!
  *

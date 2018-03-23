@@ -1,3 +1,5 @@
+﻿// UTF-8 인코딩
+
 /*
  * main.c - USE LIGHTAIDRA AT YOUR OWN RISK!
  *

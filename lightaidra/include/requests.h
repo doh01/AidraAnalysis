@@ -1,3 +1,5 @@
+﻿// UTF-8 인코딩
+
 #ifndef __REQUESTS_H_
 #define __REQUESTS_H_
 

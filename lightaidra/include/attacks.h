@@ -1,3 +1,5 @@
+﻿// UTF-8 인코딩
+
 #ifndef __ATTACKS_H_
 #define __ATTACKS_H_
 

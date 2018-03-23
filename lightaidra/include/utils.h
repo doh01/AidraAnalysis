@@ -1,3 +1,5 @@
+﻿// UTF-8 인코딩
+
 #ifndef __UTILS_H_
 #define __UTILS_H_
 
