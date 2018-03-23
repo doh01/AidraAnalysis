@@ -1,4 +1,4 @@
-/*
+﻿/*
  * utils.c - USE LIGHTAIDRA AT YOUR OWN RISK!
  *
  * Lightaidra - IRC-based mass router scanner/exploiter.
@@ -312,6 +312,7 @@ unsigned int get_spoofed() {
 
 /* pidprocess()     */
 /* check for clones */
+// 프로세스 중복 체크 및 프로세스 생성
 void pidprocess() {
     FILE *pidfd;
     unsigned int pidc;
