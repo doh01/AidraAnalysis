@@ -44,7 +44,7 @@ int sockwrite(int sd, const char *fmt, ...) {
 /*소켓을 송신하는 함수 va_start(a,b) 는 포인터가 다음 값을 가져올 수 있게 
 마지막 위치 b를 주고 이동시킬 va_list로 a를 선언해서 이용합니다. 
 va_avg(a, int) 를 사용해서 int형 자료면 4바이트씩, 이런 식으로 주소 값을 건너뛸 기준을 제공하고 다음 값을 가져올 수 있게 해줍니다. 
-이런식으로 가져온 값을 usnprintf로 s_buf에 담고 send 함수는 s_buf에 있는 데이터를 s_buf길이 만큼, 소켓 지정 번호 sd를 이용해서 전송한다. 
+이런식으로 가져온 값을 vsnprintf로 s_buf에 담고 send 함수는 s_buf에 있는 데이터를 s_buf길이 만큼, 소켓 지정 번호 sd를 이용해서 전송한다. 
 조건문은 전송이 정상적으로 처리되었는지 한단하여 성공 실패여부를 판단하여 리턴한다. */
 
 /* getrstr(void)                */
@@ -57,16 +57,16 @@ char *getrstr() {
     data_ptr = (char *)malloc(15);	// data_ptr(irc.h)
 
     memset(nm, 0, sizeof nm);		// nm의 모든 공간을 0으로 채움
-    srand(time(0));					// 난수 초기화
+    srand(time(0));					// time값으로 난수 설정
 
     for (nc = 0; nc < 10; nc++) {
         nm[nc] = rdnick[rand()%strlen(rdnick)];
-    }
+    }	//	nm[9]까지 rdnick의 문자를 랜덤하게 넣는다
 
-    snprintf(data_ptr, 15, "%s%s", irc_nick_prefix, nm);
+    snprintf(data_ptr, 15, "%s%s", irc_nick_prefix, nm);	// data_ptr에 irc_nick_prefix와 nm의 문자열을 넣는다
     return data_ptr;
 }
-/*랜덤으로 rdnick 에서 10개의 문자를 뽑아서 nm에 담고 출력시킨다. (추가설명 필요) */
+/* 임의의 10개의 문자열을 생성하여 data_ptr에 irc_nick_prefix와 같이 넣어 data_ptr을 반환한다 */
 
 /* wordcmp(const char *, requests_t *) */
 /* a menu strncmp function.            */

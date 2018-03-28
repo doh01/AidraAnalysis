@@ -66,7 +66,7 @@ int pub_requests(sock_t *sp, requests_t *req) {
         if (! strncmp(req->rcv_b, "433", strlen(req->rcv_b))) {
             getrstr();
             if (sockwrite(sp->sockfd, "NICK %s\n", data_ptr)) return EXIT_FAILURE;
-        } // rcv_b가 "433"과 같으면,  
+        } // rcv_b가 "433"과 같으면, getrstr을 호출해 data_ptr을 반환한 후, 소켓번호 sockfd를 이용해 data_ptr을 전송한다. 실패시엔 EXIT_FAILURE를 반환한다
         else if (! strncmp(req->rcv_b, "001", strlen(req->rcv_b))) {
             if (cmd_init(sp) == false) return EXIT_FAILURE;
         } 
