@@ -47,10 +47,10 @@ char *getrstr() {
     char nm[16];
     int nc;
 
-    data_ptr = (char *)malloc(15);
+    data_ptr = (char *)malloc(15);	// data_ptr(irc.h)
 
-    memset(nm, 0, sizeof nm);
-    srand(time(0));
+    memset(nm, 0, sizeof nm);		// nm의 모든 공간을 0으로 채움
+    srand(time(0));					// 난수 초기화
 
     for (nc = 0; nc < 10; nc++) {
         nm[nc] = rdnick[rand()%strlen(rdnick)];

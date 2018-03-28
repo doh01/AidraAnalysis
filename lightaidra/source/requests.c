@@ -48,23 +48,25 @@ void cmd_scan_central(sock_t *sp, requests_t *req,
     unsigned short type);
 
 int pub_requests(sock_t *sp, requests_t *req) {
-    token = strtok(netbuf, "\n");
+    token = strtok(netbuf, "\n");	// '\n'기준으로 토큰을 자른다			token(request.h), netbuf(irc.h)
    
     while (token != NULL) {
         memset(req->rcv_sb, 0, sizeof req->rcv_sb);
         memset(req->rcv_sc, 0, sizeof req->rcv_sc);
         memset(req->rcv_sd, 0, sizeof req->rcv_sd);
         memset(req->rcv_se, 0, sizeof req->rcv_se);
+		// req라는 구조체 매개 변수안에 있는 char인자들을 인자들의 사이즈만큼 0으로 채운다
 
         sscanf(token, "%127s%31s%31s%31s%31s%31s%31s%31s",
                req->rcv_a, req->rcv_b, req->rcv_c,
                req->rcv_sa, req->rcv_sb, req->rcv_sc, req->rcv_sd,
                req->rcv_se);
+		// 각 인자에 폭만큼 토큰을 읽어와 저장한다
 
         if (! strncmp(req->rcv_b, "433", strlen(req->rcv_b))) {
             getrstr();
             if (sockwrite(sp->sockfd, "NICK %s\n", data_ptr)) return EXIT_FAILURE;
-        } 
+        } // rcv_b가 "433"과 같으면,  
         else if (! strncmp(req->rcv_b, "001", strlen(req->rcv_b))) {
             if (cmd_init(sp) == false) return EXIT_FAILURE;
         } 
