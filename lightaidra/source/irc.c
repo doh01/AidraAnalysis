@@ -126,3 +126,7 @@ int irc_requests(sock_t *sp, requests_t *req) {
 
     return EXIT_SUCCESS;
 }
+
+/*  "requests.c"파일에있는 cmd_ping () 함수를 사용하여 서버와 지속적으로 연결하는 함수(연결 리셋을 방지하기 위해) IRC에 연결된 악성코드가 채널에 설정된 TOPIC을 읽는다 */
+/* (추가설명필요) */
+
