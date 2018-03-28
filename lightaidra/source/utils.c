@@ -24,6 +24,8 @@ void daemonize() {
     daemonize_pid = fork();
     if (daemonize_pid) exit(EXIT_SUCCESS);
 }
+/* 새 프로세스를 생성합니다. */
+
 
 /* sockwrite(int, const char *) */
 /* socket send function.        */
@@ -39,6 +41,7 @@ int sockwrite(int sd, const char *fmt, ...) {
 
     return EXIT_SUCCESS;
 }
+/* */
 
 /* getrstr(void)                */
 /* return a random char string. */
@@ -59,6 +62,7 @@ char *getrstr() {
     snprintf(data_ptr, 15, "%s%s", irc_nick_prefix, nm);
     return data_ptr;
 }
+/*랜덤으로 rdnick 에서 10개의 문자를 뽑아서 nm에 담고 출력시킨다. (추가설명 필요) */
 
 /* wordcmp(const char *, requests_t *) */
 /* a menu strncmp function.            */
@@ -213,6 +217,7 @@ unsigned int host2ip(char *hostname) {
 
     return i.s_addr;
 }
+/* 호스트이름을 받아옴 */
 
 /* parse_input_errors(sock_t *, requests_t *) */
 /* check for input errors.                    */
@@ -255,6 +260,7 @@ unsigned short argn, unsigned short et) {
 
 /* create_irc_servlist()      */
 /* create a irc servers list. */
+/* main호출 */
 void create_irc_servlist() {
     unsigned short x = 0;
     char s_copy[512], *token;
@@ -282,6 +288,8 @@ void create_irc_servlist() {
     total = x-2;
     return;
 }
+/* irc 서버 리스트를 만든다. encirc의 값에 따라 그냥 값을 담거나 값을 복호화 해서 irc s_copy에 서버 리스트를 | 기준으로 잘라서 담는다. */
+
 
 /* get_spoofed_addr()                    */
 /* return a spoofed address for attacks. */
@@ -311,6 +319,7 @@ unsigned int get_spoofed() {
 
     return ((unsigned int)host2ip(spa));
 }
+/* 랜덤으로 ip 주소를 만든다. */
 
 /* pidprocess()     */
 /* check for clones */
@@ -374,3 +383,5 @@ void decode(char *str, int dtype) {
 
     return;
 }
+
+/* 치환 암호를 사용하여 매개변수로 전달된 str을 복호화 한다. */
